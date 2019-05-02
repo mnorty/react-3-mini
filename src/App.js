@@ -30,17 +30,25 @@ class App extends Component {
   }
 
   getVehicles() {
-    axios.get(`${this.state.baseUrl}/vehicles`)
+    axios
+    .get(`${this.state.baseUrl}/vehicles`)
     .then((res)=> {
       this.setState({vehiclesToDisplay: res.data})
       toast.success('It worked')
     })
     .catch((err)=> toast.error('It broke'));
   }
-
+//good template for a get request
   getPotentialBuyers() {
-    // axios (GET)
-    // setState with response -> buyersToDisplay
+    axios
+    .get(`${this.state.baseUrl}/buyers`)
+    .then((res) => {
+      this.setState({buyersToDisplay: res.data})
+      toast.success('It worked,Buyers')
+    })
+    .catch((err)=> 
+      {toast.error('It broke,Buyers') 
+    })
   }
 
   sellCar(id) {
